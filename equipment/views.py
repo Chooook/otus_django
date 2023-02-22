@@ -8,3 +8,7 @@ def equipment_view(request):
         'equipment_list': equipment_list,
     }
     return render(request, 'equipment/equipment.html', context)
+
+
+def about_view(request):
+    return render(request, 'equipment/about.html')
