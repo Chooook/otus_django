@@ -4,7 +4,8 @@ from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
                                   UpdateView,
-                                  DeleteView)
+                                  DeleteView,
+                                  TemplateView)
 
 from .models import Category, Equipment
 
@@ -18,8 +19,8 @@ def equipment_view(request):
     return render(request, 'equipment/equipment.html', context)
 
 
-def about_view(request):
-    return render(request, 'equipment/about.html')
+class AboutTemplateView(TemplateView):
+    template_name = 'equipment/about.html'
 
 
 class CategoryListView(ListView):
