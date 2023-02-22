@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Category, Equipment
 
@@ -18,4 +18,8 @@ def about_view(request):
 
 
 class CategoryListView(ListView):
+    model = Category
+
+
+class CategoryDetailView(DetailView):
     model = Category
