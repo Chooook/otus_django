@@ -19,4 +19,7 @@ urlpatterns = [
     path('category/update/<int:pk>',
          views.CategoryUpdateView.as_view(),
          name='category-update'),
+    path('category/delete/<int:pk>',
+         views.CategoryDeleteView.as_view(),
+         name='category-delete'),
 ]
