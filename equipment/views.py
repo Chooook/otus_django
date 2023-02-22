@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import (ListView,
+                                  DetailView,
+                                  CreateView,
+                                  UpdateView,
+                                  DeleteView)
 
 from .models import Category, Equipment
 
@@ -23,3 +28,9 @@ class CategoryListView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Category
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    fields = ('name',)
+    success_url = reverse_lazy('equipment:category-list')
