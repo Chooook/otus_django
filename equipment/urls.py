@@ -13,4 +13,7 @@ urlpatterns = [
     path('category/detail/<int:pk>',
          views.CategoryDetailView.as_view(),
          name='category-detail'),
+    path('category/create',
+         views.CategoryCreateView.as_view(),
+         name='category-create'),
 ]
