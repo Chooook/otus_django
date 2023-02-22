@@ -16,5 +16,7 @@
             {% endfor %}
         </ul>
 {#        <p>Количество товаров: {{ equipment_list|length }}</p>#}
+    {% else %}
+        <h4>There is no equipments yet</h4>
     {% endif %}
 {% endblock %}
