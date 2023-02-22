@@ -40,3 +40,8 @@ class CategoryUpdateView(UpdateView):
     model = Category
     fields = ('name',)
     success_url = reverse_lazy('equipment:category-list')
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    success_url = reverse_lazy('equipment:category-list')
