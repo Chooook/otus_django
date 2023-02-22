@@ -34,3 +34,9 @@ class CategoryCreateView(CreateView):
     model = Category
     fields = ('name',)
     success_url = reverse_lazy('equipment:category-list')
+
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    fields = ('name',)
+    success_url = reverse_lazy('equipment:category-list')
