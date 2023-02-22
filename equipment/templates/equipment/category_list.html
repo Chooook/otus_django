@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Category list
+{% endblock %}
+
+{% block body %}
+    <h1>Category list</h1>
+    <ul>
+        {% for category in object_list %}
+            <li>
+                {{ category.name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
