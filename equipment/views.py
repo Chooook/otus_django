@@ -25,6 +25,7 @@ class AboutTemplateView(TemplateView):
 
 class CategoryListView(ListView):
     model = Category
+    context_object_name = 'category_list'
 
 
 class CategoryDetailView(DetailView):

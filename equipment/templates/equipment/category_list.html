@@ -6,10 +6,10 @@
 
 {% block body %}
     <h1>Categories</h1>
-    {% if object_list %}
+    {% if category_list %}
         <h1>Category list</h1>
         <ul>
-            {% for category in object_list %}
+            {% for category in category_list %}
                 <li>
                     <a href="{% url 'equipment:category-detail' pk=category.pk %}">
                         {{ category.name }}
