@@ -16,7 +16,7 @@ def equipment_view(request):
         'equipment_list': equipment_list,
         # 'equipment_count': equipment_list.count(),
     }
-    return render(request, 'equipment/equipment.html', context)
+    return render(request, 'equipment/equipment_list.html', context)
 
 
 class AboutTemplateView(TemplateView):
