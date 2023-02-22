@@ -5,15 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Category list</h1>
-    <ul>
-        {% for category in object_list %}
-            <li>
-                <a href="{% url 'equipment:category-detail' pk=category.pk %}">
-                    {{ category.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if object_list %}
+        <h1>Category list</h1>
+        <ul>
+            {% for category in object_list %}
+                <li>
+                    <a href="{% url 'equipment:category-detail' pk=category.pk %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4>There is no categories yet</h4>
+    {% endif %}
     <a class="btn btn-primary" href="{% url 'equipment:category-create' %}">Create</a>
 {% endblock %}
