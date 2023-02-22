@@ -9,7 +9,9 @@
     <ul>
         {% for category in object_list %}
             <li>
-                {{ category.name }}
+                <a href="{% url 'equipment:category-detail' pk=category.pk %}">
+                    {{ category.name }}
+                </a>
             </li>
         {% endfor %}
     </ul>
