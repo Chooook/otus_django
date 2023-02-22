@@ -11,4 +11,5 @@
             Name: {{ object.name }}
         </li>
     </ul>
+    <a class="btn btn-primary" href="{% url 'equipment:category-update' pk=object.pk %}">Change category</a>
 {% endblock %}
