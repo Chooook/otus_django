@@ -5,6 +5,9 @@ from . import views
 app_name = 'equipment'
 
 urlpatterns = [
+    path('',
+         views.IndexTemplateView.as_view(),
+         name='equipment-list'),
     path('equipment-list',
          views.equipment_view,
          name='equipment-list'),

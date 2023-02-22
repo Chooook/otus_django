@@ -10,6 +10,10 @@ from django.views.generic import (ListView,
 from .models import Category, Equipment
 
 
+class IndexTemplateView(TemplateView):
+    template_name = 'equipment/index.html'
+
+
 def equipment_view(request):
     equipment_list = Equipment.objects.all()
     context = {
