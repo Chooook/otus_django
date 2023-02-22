@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Category {{ object.name|title }} details
+{% endblock %}
+
+{% block body %}
+    <h1>Category {{ object.name|title }} details</h1>
+    <ul>
+        <li>
+            Name: {{ object.name }}
+        </li>
+    </ul>
+{% endblock %}
