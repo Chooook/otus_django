@@ -10,4 +10,7 @@ urlpatterns = [
     path('category/list',
          views.CategoryListView.as_view(),
          name='category-list'),
+    path('category/detail/<int:pk>',
+         views.CategoryDetailView.as_view(),
+         name='category-detail'),
 ]
