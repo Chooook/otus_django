@@ -6,6 +6,7 @@ from django.views.generic import (ListView,
                                   DeleteView,
                                   TemplateView)
 
+from .forms import CategoryForm, EquipmentForm, ContactForm
 from .models import Category, Equipment
 
 
@@ -19,8 +20,8 @@ class AboutTemplateView(TemplateView):
 
 class EquipmentCreateView(CreateView):
     model = Equipment
-    fields = ('name', 'category', 'img')
     success_url = reverse_lazy('equipment:equipment-list')
+    form_class = EquipmentForm
 
 
 class EquipmentListView(ListView):
@@ -34,8 +35,8 @@ class EquipmentDetailView(DetailView):
 
 class EquipmentUpdateView(UpdateView):
     model = Equipment
-    fields = ('name', 'category', 'img')
     success_url = reverse_lazy('equipment:equipment-list')
+    form_class = EquipmentForm
 
 
 class EquipmentDeleteView(DeleteView):
@@ -45,8 +46,8 @@ class EquipmentDeleteView(DeleteView):
 
 class CategoryCreateView(CreateView):
     model = Category
-    fields = ('name',)
     success_url = reverse_lazy('equipment:category-list')
+    form_class = CategoryForm
 
     # forms overload
     # def form_valid(self, form):
@@ -87,8 +88,8 @@ class CategoryDetailView(DetailView):
 
 class CategoryUpdateView(UpdateView):
     model = Category
-    fields = ('name',)
     success_url = reverse_lazy('equipment:category-list')
+    form_class = CategoryForm
 
     # to get success_url dynamically
     # def get_success_url(self):
