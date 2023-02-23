@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Equipment {{ object|title }} details
+{% endblock %}
+
+{% block body %}
+    <h1>Equipment {{ object|title }} details</h1>
+    <ul>
+        <li>
+            Name: {{ object }}
+        </li>
+        <li>
+            Category:
+            <a href="{% url 'equipment:category-detail' pk=object.category.pk %}">
+                {{ object.category }}
+            </a>
+        </li>
+    </ul>
+    <a class="btn btn-primary" href="{% url 'equipment:equipment-update' pk=object.pk %}">Change</a>
+    <a class="btn btn-danger" href="{% url 'equipment:equipment-delete' pk=object.pk %}">Delete</a>
+{% endblock %}

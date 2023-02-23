@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (ListView,
                                   DetailView,
@@ -14,13 +13,47 @@ class IndexTemplateView(TemplateView):
     template_name = 'equipment/index.html'
 
 
+class AboutTemplateView(TemplateView):
+    template_name = 'equipment/about.html'
+
+
+class EquipmentCreateView(CreateView):
+    model = Equipment
+    fields = ('name', 'category',)
+    success_url = reverse_lazy('equipment:equipment-list')
+
+
 class EquipmentListView(ListView):
     model = Equipment
     context_object_name = 'equipment_list'
 
 
-class AboutTemplateView(TemplateView):
-    template_name = 'equipment/about.html'
+class EquipmentDetailView(DetailView):
+    model = Equipment
+
+
+class EquipmentUpdateView(UpdateView):
+    model = Equipment
+    fields = ('name', 'category',)
+    success_url = reverse_lazy('equipment:equipment-list')
+
+
+class EquipmentDeleteView(DeleteView):
+    model = Equipment
+    success_url = reverse_lazy('equipment:equipment-list')
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    fields = ('name',)
+    success_url = reverse_lazy('equipment:category-list')
+
+    # forms overload
+    # def form_valid(self, form):
+    #     return super().form_valid(form)
+    #
+    # def form_invalid(self, form):
+    #     return super().form_invalid(form)
 
 
 class CategoryListView(ListView):
@@ -50,19 +83,6 @@ class CategoryDetailView(DetailView):
     # def get(self, request, *args, **kwargs):
     #     add some logging here??
     #     return super().get(request, *args, **kwargs)
-
-
-class CategoryCreateView(CreateView):
-    model = Category
-    fields = ('name',)
-    success_url = reverse_lazy('equipment:category-list')
-
-    # forms overload
-    # def form_valid(self, form):
-    #     return super().form_valid(form)
-    # 
-    # def form_invalid(self, form):
-    #     return super().form_invalid(form)
 
 
 class CategoryUpdateView(UpdateView):

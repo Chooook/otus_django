@@ -11,7 +11,10 @@
         <ul>
             {% for equipment in equipment_list %}
                 <li>
-                    {{ equipment.name }}({{ equipment.category.name }})
+{#                {{ equipment.pk }}#}
+                    <a href="{% url 'equipment:equipment-detail' pk=equipment.pk %}">
+                        {{ equipment }}
+                    </a>
                 </li>
             {% endfor %}
         </ul>
@@ -19,4 +22,5 @@
     {% else %}
         <h4>There is no equipments yet</h4>
     {% endif %}
+    <a class="btn btn-primary" href="{% url 'equipment:equipment-create' %}">Create</a>
 {% endblock %}
