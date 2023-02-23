@@ -19,7 +19,7 @@ class AboutTemplateView(TemplateView):
 
 class EquipmentCreateView(CreateView):
     model = Equipment
-    fields = ('name', 'category',)
+    fields = ('name', 'category', 'img')
     success_url = reverse_lazy('equipment:equipment-list')
 
 
@@ -34,7 +34,7 @@ class EquipmentDetailView(DetailView):
 
 class EquipmentUpdateView(UpdateView):
     model = Equipment
-    fields = ('name', 'category',)
+    fields = ('name', 'category', 'img')
     success_url = reverse_lazy('equipment:equipment-list')
 
 
