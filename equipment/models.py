@@ -15,6 +15,8 @@ class Equipment(models.Model):
 
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    # image can be blob (for desktop app) or on disk (for server app - faster)
+    img = models.ImageField(upload_to='equipment', blank=True, null=True)
 
     def __str__(self):
         return self.name
