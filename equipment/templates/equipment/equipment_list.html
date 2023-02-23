@@ -12,7 +12,10 @@
             {% for equipment in equipment_list %}
                 <li>
 {#                {{ equipment.pk }}#}
-                    <a href="{% url 'equipment:equipment-detail' pk=equipment.pk %}">
+                    <a class="btn btn-info" href="{% url 'equipment:equipment-detail' pk=equipment.pk %}">
+                        {% if equipment.img %}
+                            <img width="128px" src="{{ equipment.img.url }}" alt="{{ equipment }}">
+                        {% endif %}
                         {{ equipment }}
                     </a>
                 </li>
