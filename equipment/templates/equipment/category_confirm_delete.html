@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Category {{ object.name|title }} deletion
+    Category {{ object|title }} deletion
 {% endblock %}
 
 {% block body %}
-    <h1>Category {{ object.name|title }} deletion</h1>
+    <h1>Category {{ object|title }} deletion</h1>
     <form method="post">
         {% csrf_token %}
         Are you sure?

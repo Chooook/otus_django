@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Category {{ object.name|title }} details
+    Category {{ object|title }} details
 {% endblock %}
 
 {% block body %}
-    <h1>Category {{ object.name|title }} details</h1>
+    <h1>Category {{ object|title }} details</h1>
     <ul>
         <li>
-            Name: {{ object.name }}
+            Name: {{ object }}
         </li>
     </ul>
     <a class="btn btn-primary" href="{% url 'equipment:category-update' pk=object.pk %}">Change</a>

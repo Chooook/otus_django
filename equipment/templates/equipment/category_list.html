@@ -7,12 +7,12 @@
 {% block body %}
     <h1>Categories</h1>
     {% if category_list %}
-        <h1>Category list</h1>
+        <h3>Category list</h3>
         <ul>
             {% for category in category_list %}
                 <li>
                     <a href="{% url 'equipment:category-detail' pk=category.pk %}">
-                        {{ category.name }}
+                        {{ category }}
                     </a>
                 </li>
             {% endfor %}
