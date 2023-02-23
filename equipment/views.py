@@ -14,13 +14,9 @@ class IndexTemplateView(TemplateView):
     template_name = 'equipment/index.html'
 
 
-def equipment_view(request):
-    equipment_list = Equipment.objects.all()
-    context = {
-        'equipment_list': equipment_list,
-        # 'equipment_count': equipment_list.count(),
-    }
-    return render(request, 'equipment/equipment_list.html', context)
+class EquipmentListView(ListView):
+    model = Equipment
+    context_object_name = 'equipment_list'
 
 
 class AboutTemplateView(TemplateView):
