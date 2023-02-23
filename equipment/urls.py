@@ -43,6 +43,9 @@ urlpatterns = [
     path('equipment/delete/<int:pk>',
          views.EquipmentDeleteView.as_view(),
          name='equipment-delete'),
+    path('equipment/contact',
+         views.ContactFormView.as_view(),
+         name='contact'),
 ]
 
 # needed if not production
