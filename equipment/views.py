@@ -4,7 +4,8 @@ from django.views.generic import (ListView,
                                   CreateView,
                                   UpdateView,
                                   DeleteView,
-                                  TemplateView)
+                                  TemplateView,
+                                  FormView)
 
 from .forms import CategoryForm, EquipmentForm, ContactForm
 from .models import Category, Equipment
@@ -99,3 +100,13 @@ class CategoryUpdateView(UpdateView):
 class CategoryDeleteView(DeleteView):
     model = Category
     success_url = reverse_lazy('equipment:category-list')
+
+
+class ContactFormView(FormView):
+    template_name = 'equipment/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('equipment:contact')
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
