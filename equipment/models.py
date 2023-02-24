@@ -10,6 +10,10 @@ class TimestampMixin(models.Model):
     update = models.DateTimeField(name='updated_at', auto_now=True)
 
 
+class Supplier(TimestampMixin):
+    name = models.CharField(unique=True, max_length=64)
+
+
 class Category(TimestampMixin):
     name = models.CharField(unique=True, max_length=32)
 
@@ -23,6 +27,7 @@ class Category(TimestampMixin):
 class Product(models.Model):
     cost = models.PositiveIntegerField(default=0)
     product_name = models.CharField(unique=True, max_length=64)
+    supplier = models.ManyToManyField(Supplier)
 
 
 class Equipment(Product, TimestampMixin):
