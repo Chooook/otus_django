@@ -17,7 +17,12 @@ class Category(TimestampMixin):
         return self.name
 
 
-class Equipment(TimestampMixin):
+class Product(models.Model):
+    cost = models.PositiveIntegerField(default=0)
+    product_name = models.CharField(unique=True, max_length=64)
+
+
+class Equipment(Product, TimestampMixin):
 
     class Meta:
         unique_together = ('name', 'category')
