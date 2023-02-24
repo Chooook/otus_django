@@ -3,7 +3,7 @@ from .models import Category, Equipment, Product, DebugEquipment, Supplier
 
 
 class ProductModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
+    list_display = ('name', 'created_at', 'updated_at', 'display_suppliers')
 
 
 admin.site.register(Category)
