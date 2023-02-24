@@ -10,4 +10,10 @@ admin.site.register(Category, CategoryModelAdmin)
 admin.site.register(Equipment)
 admin.site.register(Product)
 admin.site.register(DebugEquipment)
-admin.site.register(Supplier)
+# admin.site.register(Supplier)
+
+
+# another way to register models to admin
+@admin.register(Supplier)
+class SupplierModelAdmin(admin.ModelAdmin):
+    pass
