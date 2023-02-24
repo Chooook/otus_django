@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Equipment, Product, DebugEquipment
+from .models import Category, Equipment, Product, DebugEquipment, Supplier
 
 
 class CategoryModelAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ admin.site.register(Category, CategoryModelAdmin)
 admin.site.register(Equipment)
 admin.site.register(Product)
 admin.site.register(DebugEquipment)
+admin.site.register(Supplier)
