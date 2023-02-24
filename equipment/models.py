@@ -32,6 +32,10 @@ class Category(models.Model):
         equipments_count = Equipment.objects.filter(category=self)
         return equipments_count.count()
 
+    @cached_property
+    def has_equipment(self):
+        return Equipment.objects.filter(category=self).exists()
+
     def __str__(self):
         return self.name
 
