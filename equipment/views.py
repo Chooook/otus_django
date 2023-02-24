@@ -8,7 +8,7 @@ from django.views.generic import (ListView,
                                   FormView)
 
 from .forms import CategoryForm, EquipmentForm, ContactForm
-from .models import Category, Equipment
+from .models import Category, Equipment, Product
 
 
 class IndexTemplateView(TemplateView):
@@ -110,3 +110,21 @@ class ContactFormView(FormView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+
+
+class ProductListView(ListView):
+    model = Product
+
+    # TODO create CRUD, templates and urls for Product
+    # optimises query if you use also category output in template??
+    def get_queryset(self):
+        # if without select_related(), it will load product object and
+        # then type(equipment) object, so it's SQL+1 problem in such queries
+        # usable with foreign keys
+        # return Product.objects.select_related('type')
+        # with prefetch_related() it also loads all suppliers to join them
+        # to products, but not query for each product to load his suppliers
+        # usable with m2m fields
+        return (Product.objects
+                .select_related('type')
+                .prefetch_related('suppliers'))
