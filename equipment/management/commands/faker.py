@@ -7,8 +7,11 @@ from equipment.models import Product, Equipment, Supplier, Category
 
 
 class Command(BaseCommand):
+    help = 'db fill with faker'
 
     def handle(self, *args, **options):
+        # it's bulk delete btw
+        # you can use bulk update/delete/... to QuerySets
         Product.objects.all().delete()
         Equipment.objects.all().delete()
         Supplier.objects.all().delete()

@@ -13,6 +13,7 @@ class ProductFactory(DjangoModelFactory):
 
 
 class Command(BaseCommand):
+    help = 'db fill with factory boy'
 
     def handle(self, *args, **options):
         Product.objects.all().delete()

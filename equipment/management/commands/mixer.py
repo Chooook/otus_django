@@ -5,6 +5,7 @@ from equipment.models import Product, Equipment, Supplier, Category
 
 
 class Command(BaseCommand):
+    help = 'db fill with mixer'
 
     def handle(self, *args, **options):
         Product.objects.all().delete()
