@@ -17,7 +17,7 @@ class Supplier(TimestampMixin):
         return self.name
 
 
-class Category(TimestampMixin):
+class Category(models.Model):
     name = models.CharField(unique=True, max_length=32)
 
     class Meta:
@@ -27,27 +27,28 @@ class Category(TimestampMixin):
         return self.name
 
 
-class Product(models.Model):
-    cost = models.PositiveIntegerField(default=0)
-    product_name = models.CharField(unique=True, max_length=64)
-    supplier = models.ManyToManyField(Supplier)
-
-
-class Equipment(Product, TimestampMixin):
+class Equipment(models.Model):
 
     class Meta:
-        unique_together = ('name', 'category')
+        unique_together = ('type', 'category')
 
-    name = models.CharField(max_length=64)
+    type = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # image can be blob (for desktop app) or on disk (for server app - faster)
-    img = models.ImageField(upload_to='equipment', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.type
 
     def buy(self):
         print('something')
+
+
+class Product(TimestampMixin):
+    name = models.CharField(unique=True, max_length=64)
+    type = models.ForeignKey(Equipment, on_delete=models.CASCADE)
+    supplier = models.ManyToManyField(Supplier)
+    cost = models.PositiveIntegerField(default=0)
+    # image can be blob (for desktop app) or on disk (for server app - faster)
+    img = models.ImageField(upload_to='product', blank=True, null=True)
 
 
 # proxy table example with another (extended?) functionality
