@@ -67,7 +67,8 @@ class CategoryListView(ListView):
         categories = context['category_list']
         all_equipments_count = 0
         for category in categories:
-            all_equipments_count += category.equipments_count
+            if category.has_equipment:
+                all_equipments_count += category.equipments_count
         context['all_equipments_count'] = all_equipments_count
         return context
 
