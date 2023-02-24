@@ -50,10 +50,6 @@ class Product(TimestampMixin):
     # image can be blob (for desktop app) or on disk (for server app - faster)
     img = models.ImageField(upload_to='product', blank=True, null=True)
 
-    def display_suppliers(self):
-        suppliers = self.supplier.all()
-        return ';'.join(sup.name for sup in suppliers)
-
 
 # proxy table example with another (extended?) functionality
 class DebugEquipment(Equipment):

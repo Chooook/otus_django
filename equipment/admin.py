@@ -3,6 +3,11 @@ from .models import Category, Equipment, Product, DebugEquipment, Supplier
 
 
 class ProductModelAdmin(admin.ModelAdmin):
+    @staticmethod
+    def display_suppliers(obj):
+        suppliers = obj.supplier.all()
+        return ';'.join(sup.name for sup in suppliers)
+
     list_display = ('name', 'created_at', 'updated_at', 'display_suppliers')
 
 
