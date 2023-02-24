@@ -62,6 +62,15 @@ class CategoryListView(ListView):
     model = Category
     context_object_name = 'category_list'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = context['category_list']
+        all_equipments_count = 0
+        for category in categories:
+            all_equipments_count += category.equipments_count
+        context['all_equipments_count'] = all_equipments_count
+        return context
+
     # change output queryset
     # def get_queryset(self):
     #     return self.model.objects.filter(field='value')
