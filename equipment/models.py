@@ -46,7 +46,7 @@ class Product(TimestampMixin):
     name = models.CharField(unique=True, max_length=64)
     type = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     suppliers = models.ManyToManyField(Supplier)
-    cost = models.PositiveIntegerField(default=0)
+    cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     description = models.TextField(blank=True)
     # image can be blob (for desktop app) or on disk (for server app - faster)
     img = models.ImageField(upload_to='product', blank=True, null=True)
