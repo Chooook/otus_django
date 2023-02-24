@@ -14,9 +14,11 @@
                     <a href="{% url 'equipment:category-detail' pk=category.pk %}">
                         {{ category }}
                     </a>
+                    Equipments count for category: {{ category.equipments_count }}
                 </li>
             {% endfor %}
         </ul>
+        <p>All equipments count: {{ all_equipments_count }}</p>
     {% else %}
         <h4>There is no categories yet</h4>
     {% endif %}
