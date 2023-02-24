@@ -13,6 +13,9 @@ class TimestampMixin(models.Model):
 class Category(TimestampMixin):
     name = models.CharField(unique=True, max_length=32)
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
     def __str__(self):
         return self.name
 
