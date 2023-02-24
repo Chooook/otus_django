@@ -1,6 +1,7 @@
 import random
 
 from django.core.management import BaseCommand
+from django.db.models import F
 from faker import Faker
 
 from equipment.models import Product, Equipment, Supplier, Category
@@ -23,6 +24,8 @@ class Command(BaseCommand):
             Category.objects.create(name=name)
 
         categories = Category.objects.all()
+        # bulk update with F('field_name') object usage
+        categories.update(name='old'+F('name'))
 
         for _ in range(50):
             _type = faker.unique.name()
