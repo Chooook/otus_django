@@ -8,7 +8,7 @@ class ProductModelAdmin(admin.ModelAdmin):
 
     def display_suppliers(self, obj):
         suppliers = obj.suppliers.values_list('name', flat=True)
-        return ';'.join(suppliers)
+        return '; '.join(suppliers)
     display_suppliers.short_description = 'suppliers'
 
 
