@@ -66,10 +66,15 @@ class CategoryListView(ListView):
         context = super().get_context_data(**kwargs)
         categories = context['category_list']
         all_equipments_count = 0
+        count_dict = dict()
         for category in categories:
             if category.has_equipment:
                 all_equipments_count += category.equipments_count
+                count_dict[category.name] = category.equipments_count
         context['all_equipments_count'] = all_equipments_count
+        context['max_equipment_category'] = max(count_dict)
+        context['max_equipment_value'] = count_dict.get(
+            context['max_equipment_category'])
         return context
 
     # change output queryset
