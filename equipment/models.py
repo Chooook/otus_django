@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 
 class TimestampMixin(models.Model):
@@ -23,6 +24,14 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
 
+    # when use this decorator, method becomes property (use without braces)
+    # if data changed after caching (first call of property),
+    # property will not change!!!
+    @cached_property
+    def equipments_count(self):
+        equipments_count = Equipment.objects.filter(category=self)
+        return equipments_count.count()
+
     def __str__(self):
         return self.name
 
@@ -31,7 +40,7 @@ class Equipment(models.Model):
 
     class Meta:
         unique_together = ('type', 'category')
-
+    # TODO change 'type' attribute to some another
     type = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
