@@ -34,3 +34,17 @@ class Equipment(Product, TimestampMixin):
 
     def __str__(self):
         return self.name
+
+    def buy(self):
+        print('something')
+
+
+# proxy table example with another (extended?) functionality
+class DebugEquipment(Equipment):
+
+    class Meta:
+        proxy = True
+
+    def buy(self):
+        print('something before')
+        super().buy()
