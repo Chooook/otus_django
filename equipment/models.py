@@ -13,6 +13,9 @@ class TimestampMixin(models.Model):
 class Supplier(TimestampMixin):
     name = models.CharField(unique=True, max_length=64)
 
+    def __str__(self):
+        return self.name
+
 
 class Category(TimestampMixin):
     name = models.CharField(unique=True, max_length=32)
