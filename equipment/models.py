@@ -52,7 +52,7 @@ class Equipment(models.Model):
         return self.item_type
 
     def buy(self):
-        print('something')
+        raise NotImplementedError
 
 
 class Product(TimestampMixin):
