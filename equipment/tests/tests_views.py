@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .models import Equipment, Category
+from equipment.models import Equipment, Category
 
 
 class TestEquipmentList(TestCase):

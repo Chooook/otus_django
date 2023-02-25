@@ -1,7 +1,7 @@
 from django.test import TestCase, SimpleTestCase
 from mixer.backend.django import mixer
 
-from .models import Category, Equipment
+from equipment.models import Category, Equipment
 
 
 class TestCategory(TestCase):
