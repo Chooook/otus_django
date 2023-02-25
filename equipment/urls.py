@@ -9,7 +9,7 @@ app_name = 'equipment'
 urlpatterns = [
     path('',
          views.IndexTemplateView.as_view(),
-         name='equipment-list'),
+         name='index'),
     path('about',
          views.AboutTemplateView.as_view(),
          name='about'),
