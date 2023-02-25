@@ -35,3 +35,19 @@ class TestEquipmentList(TestCase):
                                                   category=self.category)
         response = self.client.get('/equipment/list')
         self.assertIn(self.equipment, response.context['equipment_list'])
+
+
+class TestEquipmentDetail(TestCase):
+
+    def test_response_status_code(self):
+        self.category = Category.objects.create(name='test_category')
+        # equipment not saved to db
+        self.equipment = Equipment(item_type='test_equipment',
+                                   category=self.category)
+        response = self.client.get(f'/equipment/detail/1')
+        self.assertEqual(response.status_code, 404)
+        # equipment saved to db
+        self.equipment = Equipment.objects.create(item_type='test_equipment',
+                                                  category=self.category)
+        response = self.client.get(f'/equipment/detail/{self.equipment.pk}')
+        self.assertEqual(response.status_code, 200)
