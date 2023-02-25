@@ -1,4 +1,5 @@
 from django.test import TestCase, SimpleTestCase
+from mixer.backend.django import mixer
 
 from .models import Category, Equipment
 
@@ -6,10 +7,11 @@ from .models import Category, Equipment
 class TestCategory(TestCase):
 
     def setUp(self):
-        self.category = Category.objects.create(name='test_category')
+        # self.category = Category.objects.create(name='test_category')
+        self.category = mixer.blend(Category)
 
     def test_str(self):
-        self.assertEqual(str(self.category), 'test_category')
+        self.assertEqual(str(self.category), self.category.name)
 
     def test_has_equipment_false(self):
         self.assertFalse(self.category.has_equipment)
