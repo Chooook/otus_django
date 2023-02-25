@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import (ListView,
                                   DetailView,
@@ -11,7 +12,7 @@ from .forms import CategoryForm, EquipmentForm, ContactForm
 from .models import Category, Equipment, Product
 
 
-class IndexTemplateView(TemplateView):
+class IndexTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'equipment/index.html'
 
 

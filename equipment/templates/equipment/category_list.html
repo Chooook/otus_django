@@ -25,5 +25,7 @@
     {% else %}
         <h4>There is no categories yet</h4>
     {% endif %}
-    <a class="btn btn-primary" href="{% url 'equipment:category-create' %}">Create</a>
+    {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'equipment:category-create' %}">Create</a>
+    {% endif %}
 {% endblock %}
