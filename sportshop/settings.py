@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'equipment',
     'user',
+    'django_rq',
     'django_cleanup.apps.CleanupConfig'  # must be the last to work properly
 ]
 
@@ -130,3 +131,12 @@ AUTH_USER_MODEL = 'user.MyUser'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'DEFAULT_TIMEOUT': 360
+    }
+}

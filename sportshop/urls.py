@@ -19,7 +19,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('equipment.urls'))
+    path('', include('equipment.urls')),
+    path('django-rq/', include('django_rq.urls'))
 ]
 
 # needed if not production
