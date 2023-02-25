@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from equipment.models import Equipment, Category
+from user.models import MyUser
 
 
 class TestEquipmentList(TestCase):
@@ -51,3 +52,20 @@ class TestEquipmentDetail(TestCase):
                                                   category=self.category)
         response = self.client.get(f'/equipment/detail/{self.equipment.pk}')
         self.assertEqual(response.status_code, 200)
+
+
+class TestIndex(TestCase):
+
+    def test_permissions(self):
+        # as guest
+        response = self.client.get('')
+        self.assertEqual(response.status_code, 302)
+        MyUser.objects.create_user(username='user', password='1234')
+        self.client.login(username='user', password='1234')
+        # as user
+        response = self.client.get('')
+        self.assertEqual(response.status_code, 200)
+        self.client.logout()
+        # as guest again
+        response = self.client.get('')
+        self.assertEqual(response.status_code, 302)
