@@ -40,6 +40,11 @@ class Category(models.Model):
         return self.name
 
 
+class CategoryCard(models.Model):
+    category = models.OneToOneField(Category, on_delete=models.CASCADE)
+    text = models.TextField(blank=True)
+
+
 class Equipment(models.Model):
 
     class Meta:
