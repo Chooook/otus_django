@@ -7,8 +7,11 @@ from . import views, api_views
 
 app_name = 'equipment'
 
+# SimpleRouter doesn't create root api url
 router = routers.DefaultRouter()
 router.register('category', api_views.CategoryModelViewSet)
+# creates link as api/category for all methods and api/category/<int:pk>
+# for detail view so, we need to change pathname from list to some another
 
 urlpatterns = [
     path('api/', include(router.urls)),
@@ -23,7 +26,7 @@ urlpatterns = [
          name='category-create'),
     path('category/list',
          views.CategoryListView.as_view(),
-         name='category-list'),
+         name='category-all'),
     path('category/detail/<int:pk>',
          views.CategoryDetailView.as_view(),
          name='category-detail'),
@@ -38,7 +41,7 @@ urlpatterns = [
          name='equipment-create'),
     path('equipment/list',
          views.EquipmentListView.as_view(),
-         name='equipment-list'),
+         name='equipment-all'),
     path('equipment/detail/<int:pk>',
          views.EquipmentDetailView.as_view(),
          name='equipment-detail'),
