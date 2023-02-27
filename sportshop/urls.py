@@ -20,7 +20,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('equipment.urls')),
-    path('django-rq/', include('django_rq.urls'))
+    path('django-rq/', include('django_rq.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ]
 
 # needed if not production
