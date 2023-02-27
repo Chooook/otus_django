@@ -22,7 +22,7 @@ class AboutTemplateView(TemplateView):
 
 class EquipmentCreateView(CreateView):
     model = Equipment
-    success_url = reverse_lazy('equipment:equipment-list')
+    success_url = reverse_lazy('equipment:equipment-all')
     form_class = EquipmentForm
 
 
@@ -37,18 +37,18 @@ class EquipmentDetailView(DetailView):
 
 class EquipmentUpdateView(UpdateView):
     model = Equipment
-    success_url = reverse_lazy('equipment:equipment-list')
+    success_url = reverse_lazy('equipment:equipment-all')
     form_class = EquipmentForm
 
 
 class EquipmentDeleteView(DeleteView):
     model = Equipment
-    success_url = reverse_lazy('equipment:equipment-list')
+    success_url = reverse_lazy('equipment:equipment-all')
 
 
 class CategoryCreateView(CreateView):
     model = Category
-    success_url = reverse_lazy('equipment:category-list')
+    success_url = reverse_lazy('equipment:category-all')
     form_class = CategoryForm
 
     # forms overload
@@ -105,7 +105,7 @@ class CategoryDetailView(DetailView):
 
 class CategoryUpdateView(UpdateView):
     model = Category
-    success_url = reverse_lazy('equipment:category-list')
+    success_url = reverse_lazy('equipment:category-all')
     form_class = CategoryForm
 
     # to get success_url dynamically
@@ -115,7 +115,7 @@ class CategoryUpdateView(UpdateView):
 
 class CategoryDeleteView(DeleteView):
     model = Category
-    success_url = reverse_lazy('equipment:category-list')
+    success_url = reverse_lazy('equipment:category-all')
 
 
 class ContactFormView(FormView):
