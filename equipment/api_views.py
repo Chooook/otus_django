@@ -6,6 +6,7 @@ from rest_framework.response import Response
 
 from .models import Category
 from .serializers import CategorySerializer
+from .filters import CategoryFilter
 
 
 class CategoryModelViewSet(viewsets.ModelViewSet):
@@ -14,8 +15,31 @@ class CategoryModelViewSet(viewsets.ModelViewSet):
     # for JavaScript frontend developers comfort
     # renderer_classes = [render.CamelCaseJSONRenderer,
     #                     render.CamelCaseBrowsableAPIRenderer]
-    queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    # definition of fields for django-filter
+    filterset_fields = ['name']
+
+    # example of filter class usage
+    # filterset_class = CategoryFilter
+
+    def get_queryset(self):
+        queryset = Category.objects.all()
+        # filter queryset according to current user
+        # user = self.request.user
+        # return Category.objects.filter(purchaser=user)
+        #
+        # filter queryset according to username from url params
+        # you need something like this in urls to use that method
+        # path('category/<str:field_name>/', CategoryList.as_view()),
+        # field_name = self.kwargs['field_name']
+        # filter queryset according to request params
+        # field_name = self.request.query_params.get('field_name')
+        # return Category.objects.filter(category__field_name=field_name)
+        # example of using _lte suffix to get less or equal (_gte, _gt, etc.)
+        # numerical_var = self.request.query_params.get('numerical_var')
+        # if numerical_var:
+        #     queryset = queryset.filter(numerical_field_lte=numerical_var)
+        return queryset
 
 
 # only for create and retrieve ViewSet
