@@ -12,6 +12,12 @@ router = routers.DefaultRouter()
 router.register('category', api_views.CategoryModelViewSet)
 # creates link as api/category for all methods and api/category/<int:pk>
 # for detail view so, we need to change pathname from list to some another
+# router.register('category',
+#                 api_views.CategoryModelViewSet,
+#                 # basename needed if ViewSet's model is not defined
+#                 # when queryset defined in methods or there are used
+#                 # many models in one View (maybe)
+#                 basename='category')
 
 urlpatterns = [
     path('api/', include(router.urls)),
