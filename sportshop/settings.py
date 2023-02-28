@@ -151,5 +151,13 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': [
+        # limit and offset in url params
+        'rest_framework.pagination.LimitOffsetPagination'
+        # page number in url params
+        # 'rest_framework.pagination.PageNumberPagination'
+        # you can also create custom pagination or use third-party
+    ],
+    'PAGE_SIZE': 10
 }
